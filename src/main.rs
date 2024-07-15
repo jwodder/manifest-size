@@ -20,12 +20,12 @@ fn main() -> anyhow::Result<()> {
     let mut body = Vec::new();
     r.read_to_end(&mut body)
         .context("failed to read response body")?;
-    println!("Raw    response: {} bytes", body.len().separate_with_spaces());
+    let body_len_str = body.len().separate_with_spaces();
     let parsed =
         serde_json::from_slice::<Manifest>(&body).context("failed to deserialize response")?;
-    println!(
-        "Parsed response: {} bytes",
-        parsed.get_size().separate_with_spaces()
-    );
+    let parsed_size_str = parsed.get_size().separate_with_spaces();
+    let width = body_len_str.len().max(parsed_size_str.len());
+    println!("Raw    response: {body_len_str:>width$} bytes");
+    println!("Parsed response: {parsed_size_str:>width$} bytes");
     Ok(())
 }
