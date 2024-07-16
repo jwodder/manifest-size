@@ -2,8 +2,6 @@
 [![Minimum Supported Rust Version](https://img.shields.io/badge/MSRV-1.67-orange)](https://www.rust-lang.org)
 [![MIT License](https://img.shields.io/github/license/jwodder/nhmoon.svg)](https://opensource.org/licenses/MIT)
 
-[GitHub](https://github.com/jwodder/batchdav) | [Issues](https://github.com/jwodder/batchdav/issues)
-
 This is a Rust utility for measuring the sizes of individual [Zarr manifests][]
 fetched by [`dandidav`][]: both the number of bytes in a manifest's raw JSON
 source and the number of bytes used by the internal parsed representation.
