@@ -29,23 +29,33 @@ with:
 Usage
 =====
 
-    manifest-size <url>
+    manifest-size [-J|--json] <url>
 
 or, if running a localized binary:
 
-    cargo run [--release] -- <url>
+    cargo run [--release] -- [-J|--json] <url>
 
-`manifest-size` takes a single argument, an HTTP(S) URL pointing to a Zarr
-manifest file.  It downloads the file, parses it, and outputs the size of the
-data before & after parsing.
+`manifest-size` takes a single positional argument, an HTTP(S) URL pointing to
+a Zarr manifest file.  It downloads the file, parses it, and outputs the size
+of the data before & after parsing.  If the `-J`/`--json` option is supplied,
+the output will be in JSON.
 
-Example
-=======
+Examples
+========
 
 ```console
 $ manifest-size https://datasets.datalad.org/dandi/zarr-manifests/zarr-manifests-v2-sorted/001/e3b/001e3b6d-26fb-463f-af28-520a25680ab4/326273bcc8730474323a66ea4e3daa49-113328--97037755426.json
 Raw    response: 13 818 966 bytes
 Parsed response: 18 473 917 bytes
+```
+
+```console
+$ manifest-size --json https://datasets.datalad.org/dandi/zarr-manifests/zarr-manifests-v2-sorted/c7e/25d/c7e25dca-4dc9-4e83-a0d7-5fee56fa8773/c23f15b26134d808b072b8c93b1eeed8-48935--29709893986.json
+{
+  "url": "https://datasets.datalad.org/dandi/zarr-manifests/zarr-manifests-v2-sorted/c7e/25d/c7e25dca-4dc9-4e83-a0d7-5fee56fa8773/c23f15b26134d808b072b8c93b1eeed8-48935--29709893986.json",
+  "raw_bytes": 5935826,
+  "parsed_bytes": 7983735
+}
 ```
 
 [Zarr manifests]: https://github.com/dandi/dandidav/blob/main/doc/zarrman.md
