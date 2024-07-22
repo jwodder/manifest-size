@@ -46,7 +46,7 @@ Examples
 ```console
 $ manifest-size https://datasets.datalad.org/dandi/zarr-manifests/zarr-manifests-v2-sorted/001/e3b/001e3b6d-26fb-463f-af28-520a25680ab4/326273bcc8730474323a66ea4e3daa49-113328--97037755426.json
 Raw    response: 13 818 966 bytes
-Parsed response: 18 473 917 bytes
+Parsed response: 18 170 616 bytes
 ```
 
 ```console
@@ -54,7 +54,7 @@ $ manifest-size --json https://datasets.datalad.org/dandi/zarr-manifests/zarr-ma
 {
   "url": "https://datasets.datalad.org/dandi/zarr-manifests/zarr-manifests-v2-sorted/c7e/25d/c7e25dca-4dc9-4e83-a0d7-5fee56fa8773/c23f15b26134d808b072b8c93b1eeed8-48935--29709893986.json",
   "raw_bytes": 5935826,
-  "parsed_bytes": 7983735
+  "parsed_bytes": 7867736
 }
 ```
 

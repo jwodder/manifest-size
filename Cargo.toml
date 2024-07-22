@@ -17,6 +17,7 @@ clap = { version = "4.3.24", default-features = false, features = ["derive", "er
 get-size = { version = "0.1.4", features = ["derive"] }
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = { version = "1.0.120", features = ["preserve_order"] }
+smartstring = "1.0.1"
 thiserror = "1.0.62"
 thousands = "0.2.0"
 time = { version = "0.3.36", features = ["parsing", "serde"] }
