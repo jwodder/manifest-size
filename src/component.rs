@@ -1,10 +1,11 @@
 use get_size::GetSize;
+use smartstring::alias::CompactString;
 use thiserror::Error;
 
 /// A nonempty path component that does not contain a forward slash or NUL nor
 /// equals `.` or `..`
-#[derive(Clone, Eq, GetSize, Hash, Ord, PartialEq, PartialOrd)]
-pub(crate) struct Component(String);
+#[derive(Clone, Eq, Hash, Ord, PartialEq, PartialOrd)]
+pub(crate) struct Component(CompactString);
 
 fn validate(s: &str) -> Result<(), ParseComponentError> {
     if s.is_empty() {
@@ -28,6 +29,16 @@ validstr!(
     validate,
     "a plain path component"
 );
+
+impl GetSize for Component {
+    fn get_heap_size(&self) -> usize {
+        if self.0.is_inline() {
+            0
+        } else {
+            self.0.capacity()
+        }
+    }
+}
 
 #[derive(Clone, Copy, Debug, Eq, Error, PartialEq)]
 pub(crate) enum ParseComponentError {
